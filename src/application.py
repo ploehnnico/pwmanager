@@ -27,7 +27,7 @@ class Manager:
 		self.dal.connect()
 		entries = self.dal.get_all_entries()
 		crypto.encrypt_file(self.key, self.filepath)
-		pass
+		return entries
 	
 	def new_entry(self, name, password, description=""):
 		crypto.decrypt_file(self.key, self.filepath)

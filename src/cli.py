@@ -53,7 +53,17 @@ class CLI:
 		self.manager.connect(path)
 		return choice
 
-	def list_entries(self):
+	def select_entry(self):
+		entries = self.manager.get_entries()
+		n = 0
+		for i, e in enumerate(entries):
+			print(f"{i+1} {e.name} {e.description}")
+		#TODO: back to menu
+		choice = 0 
+		while choice not in [str(x+ 1) for x in range(0, n)]:
+			choice = input("Select entry:")
+			_delete_lines(1)
+		_delete_lines(i+1)
 		pass
 		
 def main():
@@ -67,6 +77,7 @@ def main():
 		pass
 	elif choice == "3":
 		pass
+	cli.list_entries()
 	pass
 
 def _delete_lines(nlines):
